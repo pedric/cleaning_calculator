@@ -1,0 +1,16 @@
+{
+  "name": "Stockholm",
+  "square_meter_price": 65,
+  "currency": "SEK",
+  "location": "sv-SE",
+  "extra_options": [
+    {
+      "name": "fönsterputs",
+      "price": 300
+    },
+    {
+      "name": "balkongstädning",
+      "price": 150
+    }
+  ]
+}

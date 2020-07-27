@@ -1,4 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: lightgray;
   font-family: sans-serif;
+}
+
+.cleaning-calculator {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 300px;
+
+  .cleaning-calculator__title {
+    margin: 4px 0;
+    font-size: 1em;
+  }
+
+  .cleaning-calculator__section {
+    padding: 8px 0;
+  }
+
+  .cleaning-calculator__input-wrap {
+    padding: 2px 0;
+
+    label {
+      margin-left: 2px;
+    }
+  }
+
+  .cleaning-calculator__input-wrap--select {
+    width: 100%;
+
+    select {
+      width: 100%;
+      padding: 4px;
+    }
+  }
 }

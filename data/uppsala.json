@@ -1,0 +1,20 @@
+{
+  "name": "Uppsala",
+  "square_meter_price": 55,
+  "currency": "SEK",
+  "location": "sv-SE",
+  "extra_options": [
+    {
+      "name": "fönsterputs",
+      "price": 300
+    },
+    {
+      "name": "balkongstädning",
+      "price": 150
+    },
+    {
+      "name": "bortforsling av skräp",
+      "price": 400
+    }
+  ]
+}
