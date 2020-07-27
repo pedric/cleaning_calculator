@@ -4,13 +4,18 @@
 
 body {
   font-family: sans-serif;
+  background-color: #fbfbfb;
+  color: #292929;
+  margin: 24px;
 }
 
 .cleaning-calculator {
-  border: 1px solid #000;
+  border: 1px solid #b7b7b7;
   border-radius: 10px;
   padding: 16px;
   max-width: 300px;
+  background-color: #efefef;
+  box-shadow: 10px 10px 35px -35px rgba(0, 0, 0, 0.75);
 
   .cleaning-calculator__title {
     margin: 4px 0;
@@ -36,5 +41,10 @@ body {
       width: 100%;
       padding: 4px;
     }
+  }
+
+  .result-feedback {
+    font-size: 1.3em;
+    color: #3f52b5;
   }
 }

@@ -13,6 +13,8 @@ export default function Input(props) {
         type={props.type}
         name={props.name.replace("ö", "o")}
         id={props.name.replace("ö", "o")}
+        value={props.value}
+        onChange={props.handler}
       ></input>
       <label htmlFor={props.name.replace("ö", "o")}>{props.name}</label>
     </div>

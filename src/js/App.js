@@ -7,7 +7,12 @@ class App extends React.Component {
     super();
     this.state = {
       city: "",
+      area: 0,
+      areaPrice: 0,
+      extrasPrice: 0,
     };
+    this.calculateAreaPrice = this.calculateAreaPrice.bind(this);
+    this.calculateExtrasPrice = this.calculateExtrasPrice.bind(this);
   }
 
   callAPI = (city) => {
@@ -18,20 +23,38 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.callAPI("stockholm");
+    this.callAPI("stockholm"); // Set Stockholm to default city
   }
 
   changeCity = (e) => {
-    console.log(e.target.value);
+    this.setState({ city: "", area: 0, areaPrice: 0, extrasPrice: 0 });
     this.callAPI(e.target.value);
   };
 
+  calculateAreaPrice = (e) => {
+    let areaPrice =
+      parseInt(e.target.value) * this.state.city.square_meter_price;
+    let validPrice = areaPrice > 0 ? areaPrice : 0;
+    let validArea =
+      parseInt(e.target.value) > 0 ? parseInt(e.target.value) : "";
+    this.setState({ areaPrice: validPrice });
+    this.setState({ area: validArea });
+  };
+
+  calculateExtrasPrice = (e) => {
+    let extrasPrice = 0;
+    const extras = document.querySelectorAll('[type = "checkbox"]');
+    for (const i of extras) {
+      // console.log(i.value);
+      // console.log(i.checked);
+      extrasPrice += i.checked ? parseInt(i.value) : 0;
+    }
+    this.setState({ extrasPrice: extrasPrice });
+    console.log("EXTRA: ", extrasPrice);
+  };
+
   render() {
-    // console.log(this.state.city.extra_options);
-
     const extra_option_inputs = this.state.city.extra_options;
-
-    console.log(extra_option_inputs);
 
     let inputs = [];
 
@@ -42,13 +65,14 @@ class App extends React.Component {
           type={"checkbox"}
           name={option.name}
           value={option.price}
+          handler={this.calculateExtrasPrice}
         />
       ));
     }
 
     return (
       <div>
-        <h1>Offert</h1>
+        <h1>Städoffert</h1>
         <div className={"cleaning-calculator"}>
           <div className={"cleaning-calculator__section"}>
             <Title classes={"cleaning-calculator__title"} title={"Välj stad"} />
@@ -68,7 +92,12 @@ class App extends React.Component {
               classes={"cleaning-calculator__title"}
               title={"Antal kvadratmeter"}
             />
-            <Input type={"number"} name={"kvm"} />
+            <Input
+              type={"number"}
+              name={"kvm"}
+              value={this.state.area}
+              handler={this.calculateAreaPrice}
+            />
           </div>
           <div className={"cleaning-calculator__section"}>
             <Title
@@ -82,7 +111,9 @@ class App extends React.Component {
               "cleaning-calculator__section cleaning-calculator__section--result"
             }
           >
-            <h4>Totalt</h4>
+            <h4 className={"result-feedback"}>
+              Totalt {this.state.areaPrice + this.state.extrasPrice} kr
+            </h4>
           </div>
         </div>
       </div>
