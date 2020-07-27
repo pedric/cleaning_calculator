@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "server": "nodemon server",
-    "build": "webpack --mode production"
+    "server": "NODE_ENV=dev nodemon server",
+    "build": "webpack --mode production",
+    "start:test": "NODE_ENV=test node server"
   },
   "repository": {
     "type": "git",

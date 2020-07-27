@@ -2,12 +2,13 @@ const stockholm = require("./data/stockholm.json");
 const uppsala = require("./data/uppsala.json");
 const cors = require("cors");
 const express = require("express");
+const path = require("path");
 const app = express();
 
+app.use(express.static("dist"));
 app.use(cors());
 
 app.get("/api/cleaning_service/:city", (req, res) => {
-  console.log(req.params.city);
   if (req.params.city === "stockholm") {
     res.json(stockholm);
   } else if (req.params.city === "uppsala") {
@@ -15,6 +16,10 @@ app.get("/api/cleaning_service/:city", (req, res) => {
   } else {
     res.status(404).send("please enter a valid city");
   }
+});
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/dist/index.html"));
 });
 
 const port = process.env.PORT || 9000;

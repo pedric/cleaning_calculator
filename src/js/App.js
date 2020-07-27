@@ -112,7 +112,7 @@ class App extends React.Component {
             }
           >
             <h4 className={"result-feedback"}>
-              Totalt {this.state.areaPrice + this.state.extrasPrice} kr
+              Total kostnad {this.state.areaPrice + this.state.extrasPrice} kr
             </h4>
           </div>
         </div>
